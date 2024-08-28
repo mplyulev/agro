@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: petyrveliki/petar-custom-nginx
+        ports:
+        - containerPort: 80
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: my-pv
+          mountPath: /usr/share/nginx/html
+      securityContext: {}
+      volumes:
+      - name: my-pv
+        persistentVolumeClaim:
+          claimName: pvc-example
