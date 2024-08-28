@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/IvanScaleFocus/argocd-testing-flow.git
+    repoURL: https://github.com/mplyulev/agro.git
     targetRevision: HEAD
     path: dev
   destination:
